@@ -6,6 +6,7 @@
 .pnp.js
 /src/App.css
 /src/AppDragDropDemo.js
+/src/test
 
 # testing
 /coverage

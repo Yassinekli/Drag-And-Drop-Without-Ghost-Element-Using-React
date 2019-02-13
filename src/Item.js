@@ -1,33 +1,25 @@
 import './style.css';
-import React, { Component } from 'react';;
+import React, { Component } from 'react';
 
 class Item extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			elementId : props.id
-		};
-	}
-
-	/* 
-		Methods
-	*/
 	getClassNames(draggedId){
 		let classNames = 'item';
-		if(this.state.elementId === draggedId)
+		if(this.props.id === draggedId)
 			return classNames.concat(' hide');
 		return classNames;
 	}
 
 	getStyle(){
-		if(this.props.style.top)
+		if((this.props.draggedId + 'c') === this.props.id)
 			return { 
-				background: this.props.style.color, 
-				top:  this.props.style.top, 
-				position: 'absolute', 
+				background: this.props.style.color,
+				top:  this.props.style.top,
 				zIndex:'-1'
 			};
-		return { background: this.props.style.color }
+		return { 
+			background: this.props.style.color,
+			top:  this.props.style.top
+		}
 	}
 
 	render() {
