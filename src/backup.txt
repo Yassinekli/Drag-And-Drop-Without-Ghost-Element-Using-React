@@ -519,3 +519,78 @@ class Container extends Component {
 }
 
 export default Container;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let boxes = this.state.boxes.slice();
+		let draggedBoxes = [];
+		let draggedIndex;
+		let hoveredIndex;
+
+		console.log(orderDraggedElement + " | " + orderHoveredElement);
+		if(orderDraggedElement > orderHoveredElement)
+		{
+			console.log('object')
+			this.state.boxes.forEach((box, i)=>{
+				if(box.id.endsWith('c'))
+					return
+				if(box.order === orderDraggedElement)
+					draggedIndex = i;
+				if(box.order === orderHoveredElement)
+					hoveredIndex = i;
+				if(box.order >= orderHoveredElement && box.order < orderDraggedElement)
+					draggedBoxes.push(box);
+			})
+			
+			boxes[draggedIndex].order = boxes[hoveredIndex].order;
+			draggedBoxes.forEach(box=>++box.order);
+		}
+		else
+		{
+			console.log('object 1')
+			this.state.boxes.forEach((box, i)=>{
+				if(box.id.endsWith('c'))
+					return
+				if(box.order === orderDraggedElement)
+					draggedIndex = i;
+				if(box.order === orderHoveredElement)
+					hoveredIndex = i;
+				if(box.order > orderDraggedElement && box.order <= orderHoveredElement)
+					draggedBoxes.push(box);
+			})
+			
+			boxes[draggedIndex].order = boxes[hoveredIndex].order;
+			draggedBoxes.forEach(box=>--box.order);
+		}
+
+		boxes[boxes.length - 1].order = boxes[draggedIndex].order;
+
+		this.setState({
+			draggedId: this.state.draggedId,
+			boxes
+		});

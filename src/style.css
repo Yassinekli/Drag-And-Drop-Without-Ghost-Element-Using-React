@@ -3,8 +3,8 @@
 }
 
 .hide{
-    opacity: 0.5;
-    border: 3px solid #000;
+    opacity: 0;
+    /* border: 3px solid #000; */
 }
 
 .item{
@@ -13,6 +13,6 @@
     position: absolute;
 
     transition-property: top;
-    transition-duration: .5s;
+    transition-duration: .3s;
     transition-timing-function: linear;
 }
