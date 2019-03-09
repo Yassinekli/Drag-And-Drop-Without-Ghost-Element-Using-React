@@ -27,6 +27,7 @@ class Container extends Component {
 					key={id}
 					id={id}
 					style={{color:color, top : (100 * (order - 1))}}
+					lastHoveredId={this.state.lastHoveredId}
 					
 					draggedId={this.state.draggedId}
 					dragStartHandler={this.dragStartHandler}
@@ -78,17 +79,13 @@ class Container extends Component {
 		let orderDraggedElement = this.state.boxes.find((box)=>(box.id === this.state.draggedId)).order;
 		let orderHoveredElement = this.state.boxes.find((box)=>(box.id === hoveredId)).order;
 		
-		//console.log(hoveredId)
-
 		let boxes = this.state.boxes.slice();
 		let draggedBoxes = [];
 		let draggedIndex;
 		let hoveredIndex;
 
-		// console.log(orderDraggedElement + " | " + orderHoveredElement);
 		if(orderDraggedElement > orderHoveredElement)
 		{
-			// console.log('object')
 			this.state.boxes.forEach((box, i)=>{
 				if(box.id.endsWith('c'))
 					return
@@ -105,7 +102,6 @@ class Container extends Component {
 		}
 		else
 		{
-			// console.log('object 1')
 			this.state.boxes.forEach((box, i)=>{
 				if(box.id.endsWith('c'))
 					return

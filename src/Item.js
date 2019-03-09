@@ -11,11 +11,12 @@ class Item extends Component {
 
 	getStyle(){
 		if((this.props.draggedId + 'c') === this.props.id)
+			{console.log(this.props.lastHoveredId)
 			return { 
 				background: this.props.style.color,
 				top:  this.props.style.top,
-				zIndex:'-1'
-			};
+				zIndex: (this.props.lastHoveredId) ? '1' : '-1'
+			};}
 		return { 
 			background: this.props.style.color,
 			top:  this.props.style.top
